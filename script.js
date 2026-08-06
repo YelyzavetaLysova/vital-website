@@ -61,6 +61,79 @@ if (teamGrid && Array.isArray(content.team)) {
   });
 }
 
+
+const publicationsSection = document.querySelector('#publications');
+const publicationsGrid = document.querySelector('#publications-grid');
+
+if (publicationsSection && publicationsGrid && Array.isArray(content.publications) && content.publications.length) {
+  publicationsSection.hidden = false;
+  publicationsGrid.innerHTML = content.publications.map((publication, index) => {
+    const title = publication.title || 'Untitled publication';
+    const type = publication.type || 'Publication';
+    const year = publication.year || '';
+    const authors = publication.authors || '';
+    const venue = publication.venue || '';
+    const summary = publication.summary || '';
+    const url = publication.url || '';
+
+    return `
+      <article class="publication-card">
+        <div class="publication-meta">
+          <span>${type}</span>
+          <span>${year || String(index + 1).padStart(2, '0')}</span>
+        </div>
+        <h3>${title}</h3>
+        ${authors ? `<p class="publication-authors">${authors}</p>` : ''}
+        ${venue ? `<p class="publication-venue">${venue}</p>` : ''}
+        ${summary ? `<p class="publication-summary">${summary}</p>` : ''}
+        ${url ? `<a class="publication-link" href="${url}" target="_blank" rel="noopener">Read publication &nearrow;</a>` : ''}
+      </article>
+    `;
+  }).join('');
+}
+
+function initialiseCarousel(shell) {
+  const track = shell.querySelector('.carousel-track');
+  const previous = shell.querySelector('[data-carousel-prev]');
+  const next = shell.querySelector('[data-carousel-next]');
+  const current = shell.querySelector('[data-carousel-current]');
+  const total = shell.querySelector('[data-carousel-total]');
+
+  if (!track || !previous || !next) return;
+
+  const cards = Array.from(track.children);
+  if (!cards.length) {
+    shell.hidden = true;
+    return;
+  }
+
+  shell.hidden = false;
+  if (total) total.textContent = String(cards.length);
+
+  const cardStep = () => {
+    const first = cards[0];
+    if (!first) return track.clientWidth;
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    return first.getBoundingClientRect().width + gap;
+  };
+
+  const update = () => {
+    const step = cardStep();
+    const index = Math.max(0, Math.min(cards.length - 1, Math.round(track.scrollLeft / step)));
+    if (current) current.textContent = String(index + 1);
+    previous.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+  };
+
+  previous.addEventListener('click', () => track.scrollBy({ left: -cardStep(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: cardStep(), behavior: 'smooth' }));
+  track.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+}
+
+document.querySelectorAll('[data-carousel]').forEach(initialiseCarousel);
+
 const header = document.querySelector('.site-header');
 window.addEventListener('scroll', () => header?.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
 

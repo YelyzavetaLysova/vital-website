@@ -32,6 +32,13 @@ window.VITAL_CONTENT = {
     github: "https://github.com/sfimediafutures"
   },
 
+  /*
+   * Add publications here when they are ready. The publications section stays
+   * hidden while this array is empty. Supported fields: title, authors, venue,
+   * year, type, url and summary.
+   */
+  publications: [],
+
   team: [
     {
       name: "Alain Dominique Starke",

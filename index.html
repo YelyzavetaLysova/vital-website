@@ -23,7 +23,7 @@
   <header class="site-header" id="top">
    <nav aria-label="Primary navigation" class="nav shell">
     <a aria-label="VITAL home" class="brand" href="#top">
-     <span aria-hidden="true" class="brand-mark">
+     <span aria-hidden="true" class="brand-mark brand-mark-mf">
       <i>
       </i>
       <i>
@@ -81,13 +81,13 @@
      <p class="hero-lead" data-content="hero.intro">
      </p>
      <div class="hero-actions">
-      <a class="button" href="#approach">
+      <a class="button hero-action-card" href="#approach">
        Explore the VITAL approach
        <span aria-hidden="true">
         &darr;
        </span>
       </a>
-      <a class="text-link" href="#example">
+      <a class="text-link hero-action-card" href="#example">
        See an example
        <span aria-hidden="true">
         &darr;
@@ -730,118 +730,60 @@
      </button>
     </div>
     <div class="use-case-panel reveal" id="use-case-panel">
-     <div class="browser-mockup">
-      <div class="browser-bar">
-       <span>
-       </span>
-       <span>
-       </span>
-       <span>
-       </span>
-       <div>
-        news.example / health / coffee-study
-       </div>
-      </div>
-      <div class="mock-page">
-       <div class="mock-main">
-        <small>
-         HEALTH &middot; NUTRITION
-        </small>
-        <h3>
-         New study links coffee consumption to longer life
-        </h3>
-        <p class="mock-lines">
-        </p>
-        <p class="mock-lines short">
-        </p>
-        <div class="mock-image">
-        </div>
-       </div>
-       <aside class="mock-vital">
-        <div class="mock-logo">
-         VITAL
-         <span>
-          ●
-         </span>
-        </div>
-        <small>
-         CLAIM CONTEXT
-        </small>
-        <h4>
-         This headline reports an association, not proof of cause.
-        </h4>
-        <ul>
-         <li>
-          <b>
-           Evidence type
-          </b>
-          <span>
-           Observational study
-          </span>
-         </li>
-         <li>
-          <b>
-           Confidence
-          </b>
-          <span>
-           Moderate
-          </span>
-         </li>
-         <li>
-          <b>
-           Important context
-          </b>
-          <span>
-           Other lifestyle factors may influence the result.
-          </span>
-         </li>
-        </ul>
-        <button>
-         Explore the evidence
-        </button>
-       </aside>
-      </div>
-     </div>
      <div class="case-copy">
-      <p class="eyebrow">
-       <span>
-       </span>
-       Reader experience
-      </p>
-      <h3>
-       Understand a claim without leaving the story.
-      </h3>
-      <p>
-       Readers can receive concise, clearly signposted context beside an article&mdash;helping them distinguish between what a study found and what a headline implies.
-      </p>
+      <div class="case-intro">
+       <p class="eyebrow">
+        <span>
+        </span>
+        Reader experience
+       </p>
+       <h3>
+        Understand a claim without leaving the story.
+       </h3>
+       <p class="case-description">
+        Readers can receive concise, clearly signposted context beside an article&mdash;helping them distinguish between what a study found and what a headline implies.
+       </p>
+      </div>
       <div class="case-points">
-       <span>
-        01
-       </span>
-       <p>
-        <b>
-         Notice uncertainty
-        </b>
-        See study type, limitations and scope.
-       </p>
-       <span>
-        02
-       </span>
-       <p>
-        <b>
-         Explore alternatives
-        </b>
-        Find additional context and relevant sources.
-       </p>
-       <span>
-        03
-       </span>
-       <p>
-        <b>
-         Make informed choices
-        </b>
-        Use evidence without requiring specialist expertise.
-       </p>
+       <article>
+        <span>
+         01
+        </span>
+        <div>
+         <b>
+          Notice uncertainty
+         </b>
+         <p>
+          See study type, limitations and scope.
+         </p>
+        </div>
+       </article>
+       <article>
+        <span>
+         02
+        </span>
+        <div>
+         <b>
+          Explore alternatives
+         </b>
+         <p>
+          Find additional context and relevant sources.
+         </p>
+        </div>
+       </article>
+       <article>
+        <span>
+         03
+        </span>
+        <div>
+         <b>
+          Make informed choices
+         </b>
+         <p>
+          Use evidence without requiring specialist expertise.
+         </p>
+        </div>
+       </article>
       </div>
      </div>
     </div>
@@ -1065,7 +1007,7 @@
         Claim extraction, Factiverse API and article categorisation
        </p>
       </article>
-      <article class="active">
+      <article>
        <span>
         04
        </span>
@@ -1260,28 +1202,21 @@
        </strong>
       </div>
      </div>
-     <div aria-hidden="true" class="network-visual">
-      <span class="node node-a">
-       V
-      </span>
-      <span class="node node-b">
-       F
-      </span>
-      <span class="node node-c">
-       AI
-      </span>
-      <span class="node node-d">
-       &checkmark;
-      </span>
-      <i class="link l1">
-      </i>
-      <i class="link l2">
-      </i>
-      <i class="link l3">
-      </i>
-      <i class="link l4">
-      </i>
+     <div class="mediafutures-brand-panel" aria-label="MediaFutures">
+      <img
+       src="images/MF_mainlogo-white.png"
+       alt="MediaFutures"
+       loading="lazy"
+      >
      </div>
+     <div class="mediafutures-brand-panel" aria-label="MediaFutures">
+      <img
+       src="images/factiverse_logo.jpeg"
+       alt="Factiverse"
+       loading="lazy"
+      >
+     </div>
+     
     </div>
     <div class="merged-subsection partnership-impact">
      <div class="section-heading split-heading reveal">
@@ -1357,8 +1292,49 @@
       </h2>
      </div>
     </div>
-    <div class="team-grid reveal" id="team-grid">
+    <div class="carousel-shell team-carousel reveal" data-carousel="team">
+     <div class="carousel-heading-row">
+      <p class="carousel-status" aria-live="polite">
+       <span data-carousel-current>1</span> / <span data-carousel-total>1</span>
+      </p>
+      <div class="carousel-controls" aria-label="Team carousel controls">
+       <button class="carousel-button" data-carousel-prev type="button" aria-label="Previous team member">&larr;</button>
+       <button class="carousel-button" data-carousel-next type="button" aria-label="Next team member">&rarr;</button>
+      </div>
+     </div>
+     <div class="team-grid carousel-track" id="team-grid" tabindex="0">
+     </div>
     </div>
+
+    <div class="merged-subsection publications-section" id="publications" hidden>
+     <div class="section-heading split-heading reveal">
+      <div>
+       <p class="eyebrow">
+        <span></span>
+        Publications
+       </p>
+       <h2>
+        Research from
+        <br>
+        <em>the VITAL project.</em>
+       </h2>
+      </div>
+      <p>Selected publications, papers and research outputs connected to the project.</p>
+     </div>
+     <div class="carousel-shell publications-carousel reveal" data-carousel="publications">
+      <div class="carousel-heading-row">
+       <p class="carousel-status" aria-live="polite">
+        <span data-carousel-current>1</span> / <span data-carousel-total>1</span>
+       </p>
+       <div class="carousel-controls" aria-label="Publication carousel controls">
+        <button class="carousel-button" data-carousel-prev type="button" aria-label="Previous publication">&larr;</button>
+        <button class="carousel-button" data-carousel-next type="button" aria-label="Next publication">&rarr;</button>
+       </div>
+      </div>
+      <div class="publications-grid carousel-track" id="publications-grid" tabindex="0"></div>
+     </div>
+    </div>
+
     <div class="merged-subsection team-links" id="updates">
      <div class="section-heading split-heading reveal">
       <div>
@@ -1410,7 +1386,13 @@
    </section>
    <section class="contact-section" id="contact">
     <div class="shell contact-inner reveal">
-     <div>
+     <div class="contact-heading">
+      <img
+       class="contact-mediafutures-mark"
+       src="images/MF_LOGOSimpleVersion-white.png"
+       alt=""
+       aria-hidden="true"
+      >
       <p class="eyebrow light">
        <span>
        </span>
@@ -1506,10 +1488,15 @@
       Contact
      </a>
     </div>
-    <div>
+    <div class="footer-mediafutures">
      <small>
       RESEARCH CENTRE
      </small>
+     <img
+      src="images/MF_mainlogo-white.png"
+      alt="MediaFutures"
+      loading="lazy"
+     >
      <p>
       SFI MediaFutures
       <br>

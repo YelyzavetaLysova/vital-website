@@ -1,10 +1,23 @@
-# VITAL website
+# VITAL — MediaFutures-aligned redesign
 
-Static HTML, CSS and JavaScript website for the VITAL project.
+This package preserves the existing VITAL website content, section structure,
+interactive article example, dynamic content file and JavaScript behavior.
+
+## Visual redesign
+
+The new design uses:
+
+- MediaFutures-inspired monochrome foundations
+- deep navy and clear blue accents
+- flat editorial cards and precise borders
+- supplied MediaFutures logo assets
+- supplied MediaFutures line-art banner graphics
+- grayscale-to-muted-colour treatment for team photography
+- compact, accessible mobile layouts
 
 ## Run locally
 
-Open `index.html` directly, or run:
+Open `index.html`, or run:
 
 ```bash
 python3 -m http.server 8000
@@ -14,21 +27,11 @@ Then open `http://localhost:8000`.
 
 ## Team photographs
 
-Place the four photograph files in the `images` folder using these exact names:
+Add these files to `images/`:
 
 - `Alain.jpg`
 - `Liza.jpg`
 - `Tobias.jpg`
 - `Christoph.jpg`
 
-Names, email addresses and image paths are editable in `content.js`. If an image cannot be loaded, initials are shown as a fallback.
-
-## Responsive testing
-
-The layout includes dedicated rules for phones, tablets and desktop screens. It was checked at:
-
-- 375 × 812 px
-- 430 × 932 px
-- 768 × 1024 px
-
-The mobile refinements cover navigation, hero actions, horizontal overflow, tabs, the interactive evidence example, team cards, contact links and reduced-motion preferences.
+Names, emails and image paths remain editable in `content.js`.
