@@ -3809,6 +3809,7 @@ main {
 
 .team-role {
   margin: 0 0 8px;
+  padding: 0 18px;
   color: var(--blue);
   font-size: 10px;
   font-weight: 800;
