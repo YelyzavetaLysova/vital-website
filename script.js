@@ -25,15 +25,29 @@ const teamGrid = document.querySelector('#team-grid');
 
 if (teamGrid && Array.isArray(content.team)) {
   teamGrid.innerHTML = content.team
-    .map(
-      (member, index) => `
-        <article class="team-card">
-          <div class="team-image">
+    .map((member, index) => {
+      const portrait = member.image
+        ? `
             <img
               src="${member.image}"
               alt="Portrait of ${member.name}"
               loading="lazy"
             >
+          `
+        : '';
+
+      const email = member.email
+        ? `
+          <a class="team-email" href="mailto:${member.email}">
+            ${member.email}
+          </a>
+        `
+        : '';
+
+      return `
+        <article class="team-card">
+          <div class="team-image${member.image ? '' : ' image-missing'}">
+            ${portrait}
             <span class="team-fallback" aria-hidden="true">
               ${member.initials}
             </span>
@@ -43,14 +57,14 @@ if (teamGrid && Array.isArray(content.team)) {
             ${String(index + 1).padStart(2, '0')}
           </span>
 
-          <h3>${member.name}</h3>
-
-          <a class="team-email" href="mailto:${member.email}">
-            ${member.email}
-          </a>
+          <div class="team-details">
+            <h3>${member.name}</h3>
+            <p class="team-role">${member.role || ''}</p>
+            ${email}
+          </div>
         </article>
-      `
-    )
+      `;
+    })
     .join('');
 
   teamGrid.querySelectorAll('.team-image img').forEach((image) => {
@@ -142,12 +156,16 @@ const navLinks = document.querySelector('.nav-links');
 function closeMobileMenu() {
   navLinks?.classList.remove('open');
   toggle?.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('menu-open');
 }
 
 toggle?.addEventListener('click', () => {
-  const open = toggle.getAttribute('aria-expanded') === 'true';
-  toggle.setAttribute('aria-expanded', String(!open));
-  navLinks?.classList.toggle('open', !open);
+  const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+  const shouldOpen = !isOpen;
+
+  toggle.setAttribute('aria-expanded', String(shouldOpen));
+  navLinks?.classList.toggle('open', shouldOpen);
+  document.body.classList.toggle('menu-open', shouldOpen);
 });
 
 navLinks?.querySelectorAll('a').forEach((link) => {
@@ -157,6 +175,10 @@ navLinks?.querySelectorAll('a').forEach((link) => {
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeMobileMenu();
 });
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 1040) closeMobileMenu();
+}, { passive: true });
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -204,13 +226,39 @@ const cases = {
 const caseCopy = document.querySelector('.case-copy');
 function renderCase(selected) {
   if (!caseCopy || !selected) return;
-  caseCopy.querySelector('.eyebrow').lastChild.textContent = ` ${selected.eyebrow}`;
-  caseCopy.querySelector('h3').textContent = selected.title;
-  caseCopy.querySelector(':scope > p:not(.eyebrow)').textContent = selected.body;
+
+  const eyebrow = caseCopy.querySelector('.eyebrow');
+  const title = caseCopy.querySelector('h3');
+  const description = caseCopy.querySelector('.case-description');
   const points = caseCopy.querySelector('.case-points');
-  points.innerHTML = selected.points.map((point, index) => `
-    <span>0${index + 1}</span><p><b>${point[0]}</b>${point[1]}</p>
-  `).join('');
+
+  if (eyebrow?.lastChild) {
+    eyebrow.lastChild.textContent = ` ${selected.eyebrow}`;
+  }
+
+  if (title) {
+    title.textContent = selected.title;
+  }
+
+  if (description) {
+    description.textContent = selected.body;
+  }
+
+  if (points) {
+    points.innerHTML = selected.points
+      .map(
+        (point, index) => `
+          <article>
+            <span>0${index + 1}</span>
+            <div>
+              <b>${point[0]}</b>
+              <p>${point[1]}</p>
+            </div>
+          </article>
+        `
+      )
+      .join('');
+  }
 }
 
 document.querySelectorAll('.tab').forEach((tab) => {
