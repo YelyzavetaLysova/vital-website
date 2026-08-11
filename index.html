@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link href="styles.css?v=2" rel="stylesheet">
+  <link href="styles.css?v=3" rel="stylesheet">
   <script>
   /*
    * Central editable content for the VITAL website.
@@ -525,6 +525,70 @@
        <p>
         Transparent evidence communication can support trust in journalism, health authorities and public institutions while improving resilience to misinformation.
        </p>
+      </article>
+     </div>
+    </div>
+
+    <div class="evidence-sources reveal" aria-labelledby="evidence-sources-title">
+     <div class="evidence-sources-heading">
+      <div>
+       <p class="eyebrow">
+        <span></span>
+        Selected evidence
+       </p>
+       <h3 id="evidence-sources-title">
+        Numbers behind
+        <em>the argument.</em>
+       </h3>
+      </div>
+      <p>
+       Selected figures used in the VITAL Arendalsuka presentation, with direct links to the reports behind them.
+      </p>
+     </div>
+
+     <div class="evidence-source-grid">
+      <article class="evidence-source-card">
+       <span class="evidence-source-kicker">News landscape</span>
+       <strong class="evidence-source-stat">52%</strong>
+       <p class="evidence-source-copy">
+        of 18–24-year-olds say social media, video networks and AI are their main source of news.
+       </p>
+       <a class="evidence-source-link" href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026" target="_blank" rel="noopener noreferrer">
+        Reuters Digital News Report 2026 <span aria-hidden="true">↗</span>
+       </a>
+      </article>
+
+      <article class="evidence-source-card">
+       <span class="evidence-source-kicker">Trust</span>
+       <strong class="evidence-source-stat">37%</strong>
+       <p class="evidence-source-copy">
+        trust news most of the time globally; trust is 22% for news on social media and 20% for news from AI chatbots.
+       </p>
+       <a class="evidence-source-link" href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/dnr-executive-summary" target="_blank" rel="noopener noreferrer">
+        Reuters Digital News Report 2026 <span aria-hidden="true">↗</span>
+       </a>
+      </article>
+
+      <article class="evidence-source-card">
+       <span class="evidence-source-kicker">Newsrooms + AI</span>
+       <strong class="evidence-source-stat">87%</strong>
+       <p class="evidence-source-copy">
+        of surveyed news leaders said generative AI was fully or somewhat transforming newsrooms.
+       </p>
+       <a class="evidence-source-link" href="https://reutersinstitute.politics.ox.ac.uk/journalism-media-and-technology-trends-and-predictions-2025" target="_blank" rel="noopener noreferrer">
+        Journalism, Media &amp; Technology Trends 2025 <span aria-hidden="true">↗</span>
+       </a>
+      </article>
+
+      <article class="evidence-source-card">
+       <span class="evidence-source-kicker">Global risk</span>
+       <strong class="evidence-source-stat evidence-source-rank">#1</strong>
+       <p class="evidence-source-copy">
+        misinformation and disinformation ranked as the top global risk over the two-year horizon.
+       </p>
+       <a class="evidence-source-link" href="https://www.weforum.org/publications/global-risks-report-2025/digest/" target="_blank" rel="noopener noreferrer">
+        World Economic Forum Global Risks Report 2025 <span aria-hidden="true">↗</span>
+       </a>
       </article>
      </div>
     </div>
@@ -1374,6 +1438,39 @@
     </span>
    </div>
   </footer>
+
+  <button class="mobile-vital-tab" id="mobile-vital-tab" type="button" aria-controls="mobile-vital-drawer" aria-expanded="false">
+   <span>TRY VITAL</span><span class="mobile-vital-tab-arrow" aria-hidden="true">‹</span>
+  </button>
+  <div class="mobile-vital-scrim" id="mobile-vital-scrim" hidden></div>
+  <aside class="mobile-vital-drawer" id="mobile-vital-drawer" aria-hidden="true" aria-label="VITAL example verification demo">
+   <div class="mobile-vital-handle" aria-hidden="true"></div>
+   <div class="mobile-vital-head">
+    <div><span class="mobile-vital-brand">VITAL</span><small>Health claim verification</small></div>
+    <button class="mobile-vital-close" type="button" aria-label="Close VITAL demo">×</button>
+   </div>
+   <p class="mobile-vital-example-note">Illustrative example — not a real verification result.</p>
+   <div class="mobile-vital-body">
+    <p class="mobile-vital-label">Example article</p>
+    <div class="mobile-vital-article">
+     <h3>Can an evening walk improve your sleep?</h3>
+     <p>A fictional health article reports that adults who regularly took a short walk in the evening also reported better sleep. It goes on to suggest that <button class="mobile-vital-inline-claim active" type="button" data-mobile-claim="walk-sleep">an evening walk improves sleep quality</button>. The article adds that <button class="mobile-vital-inline-claim" type="button" data-mobile-claim="thirty-minutes">30 minutes is the ideal amount of walking before bed</button>, and concludes that <button class="mobile-vital-inline-claim" type="button" data-mobile-claim="replace-treatment">walking can replace other approaches to sleep problems</button>.</p>
+     <small>Tap a highlighted claim to inspect it with VITAL.</small>
+    </div>
+    <p class="mobile-vital-label mobile-vital-selected-label">Selected claim</p>
+    <h3 data-mobile-vital="claim">“An evening walk improves sleep quality.”</h3>
+    <div class="mobile-vital-verdict">
+     <span class="status-dot"></span><div><small>VITAL assessment</small><strong data-mobile-vital="status">Context needed</strong></div>
+    </div>
+    <p class="mobile-vital-summary" data-mobile-vital="summary">The example article describes an association, but the wording may be read as a causal effect.</p>
+    <div class="mobile-vital-facts">
+     <div><small>Study</small><b data-mobile-vital="study">Observational</b></div>
+     <div><small>Limitation</small><b data-mobile-vital="limitation">No causality</b></div>
+    </div>
+    <div class="mobile-vital-context"><small>Why context matters</small><p data-mobile-vital="context">Other lifestyle, dietary and socioeconomic factors may influence the observed association.</p></div>
+
+   </div>
+  </aside>
  </body>
 </html>
 

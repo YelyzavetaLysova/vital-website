@@ -339,3 +339,55 @@ document.querySelectorAll('.claim-highlight').forEach((button) => {
     renderExampleClaim(button.dataset.claim);
   });
 });
+
+
+const mobileExampleClaims = {
+  'walk-sleep': {
+    status: 'Context needed',
+    claim: '“An evening walk improves sleep quality.”',
+    summary: 'The example article turns an observed relationship into a causal statement.',
+    study: 'Observational',
+    limitation: 'No causality',
+    context: 'People who walk regularly may differ in exercise habits, routines, stress and other factors that also relate to sleep.'
+  },
+  'thirty-minutes': {
+    status: 'Evidence too narrow',
+    claim: '“30 minutes is the ideal amount of walking before bed.”',
+    summary: 'A pattern in one fictional dataset would not by itself establish an ideal duration for everyone.',
+    study: 'Dose comparison',
+    limitation: 'Not guidance',
+    context: 'An observed optimum can depend on the population, measurement method and the walking durations that happened to be compared.'
+  },
+  'replace-treatment': {
+    status: 'Overstated',
+    claim: '“Walking can replace other approaches to sleep problems.”',
+    summary: 'The conclusion goes beyond what the fictional evidence described in the article could support.',
+    study: 'Claim framing',
+    limitation: 'Too broad',
+    context: 'A lifestyle association does not establish that an intervention can replace clinical assessment or other evidence-based approaches.'
+  }
+};
+
+// Mobile-only VITAL edge demo drawer
+(() => {
+  const tab = document.querySelector('#mobile-vital-tab');
+  const drawer = document.querySelector('#mobile-vital-drawer');
+  const scrim = document.querySelector('#mobile-vital-scrim');
+  const close = document.querySelector('.mobile-vital-close');
+  if (!tab || !drawer || !scrim) return;
+  const setOpen = (open) => {
+    drawer.classList.toggle('is-open', open); tab.classList.toggle('is-open', open); scrim.hidden = !open;
+    requestAnimationFrame(() => scrim.classList.toggle('is-open', open));
+    drawer.setAttribute('aria-hidden', String(!open)); tab.setAttribute('aria-expanded', String(open)); document.body.classList.toggle('vital-drawer-open', open);
+  };
+  tab.addEventListener('click', () => setOpen(true)); close?.addEventListener('click', () => setOpen(false)); scrim.addEventListener('click', () => setOpen(false));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+  document.querySelectorAll('[data-mobile-claim]').forEach(btn => btn.addEventListener('click', () => {
+    const claim = mobileExampleClaims[btn.dataset.mobileClaim]; if (!claim) return;
+    document.querySelectorAll('[data-mobile-claim]').forEach(b => b.classList.toggle('active', b === btn));
+    ['claim','status','summary','study','limitation','context'].forEach(k => { const el=drawer.querySelector(`[data-mobile-vital="${k}"]`); if(el) el.textContent=claim[k]; });
+  }));
+  let startX = null;
+  drawer.addEventListener('touchstart', e => { startX=e.touches[0].clientX; }, {passive:true});
+  drawer.addEventListener('touchend', e => { if(startX!==null && e.changedTouches[0].clientX-startX>70) setOpen(false); startX=null; }, {passive:true});
+})();
